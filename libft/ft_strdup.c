@@ -6,13 +6,13 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 12:41:55 by mpierce           #+#    #+#             */
-/*   Updated: 2024/11/07 16:09:34 by mpierce          ###   ########.fr       */
+/*   Updated: 2024/12/09 15:27:14 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(const char *s) // duplicate given string
 {
 	size_t	len;
 	char	*copy;

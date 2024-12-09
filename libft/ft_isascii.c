@@ -6,11 +6,11 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:59:29 by mpierce           #+#    #+#             */
-/*   Updated: 2024/10/29 14:01:05 by mpierce          ###   ########.fr       */
+/*   Updated: 2024/12/09 12:19:09 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+int	ft_isascii(int c) // check for ASCII character
 {
 	if (c >= 0 && c <= 127)
 		return (1);

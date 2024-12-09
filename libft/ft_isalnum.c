@@ -6,11 +6,11 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:53:47 by mpierce           #+#    #+#             */
-/*   Updated: 2024/10/29 13:00:06 by mpierce          ###   ########.fr       */
+/*   Updated: 2024/12/09 12:18:39 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+int	ft_isalnum(int c) // check for alphanumerical character
 {
 	if (c >= 48 && c <= 57)
 		return (1);

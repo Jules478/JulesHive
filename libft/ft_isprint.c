@@ -6,11 +6,11 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:01:39 by mpierce           #+#    #+#             */
-/*   Updated: 2024/10/29 14:02:42 by mpierce          ###   ########.fr       */
+/*   Updated: 2024/12/09 12:19:39 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+int	ft_isprint(int c) // check for printable ASCII character
 {
 	if (c >= 32 && c <= 126)
 		return (1);

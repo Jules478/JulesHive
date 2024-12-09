@@ -6,11 +6,11 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:50:05 by mpierce           #+#    #+#             */
-/*   Updated: 2024/10/29 13:00:35 by mpierce          ###   ########.fr       */
+/*   Updated: 2024/12/09 12:19:29 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+int	ft_isdigit(int c) // check for numerical integer
 {
 	if (c >= 48 && c <= 57)
 		return (1);
