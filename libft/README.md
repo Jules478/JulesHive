@@ -2,8 +2,8 @@
 
 ## What is it?
 
-Libft (Libray Forty-Two) is the first project in the 42 network of coding schools.
-It is a libray consisting of custom implementations of various library functions along with a few custom functions.
+Libft (Library Forty-Two) is the first project in the 42 network of coding schools.
+It is a library consisting of custom implementations of various library functions along with a few custom functions.
 These functions are then used throughout other projects at the school. 
 
 ## What Functions?

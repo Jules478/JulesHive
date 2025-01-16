@@ -24,5 +24,7 @@ Ft_printf can handle the basic input of 'printf' however the more advanced funct
 
  - %x / %X - These specifiers are used to print out an integer in base 16 (hexadecimal) with %x used to print out characters in lowercase and %X used to print out characters in uppercase.
 
+ - %% - This specifier is used to print out a single percent (%) sign.
+
  > [!NOTE]
 > This is intended as a guide only. Writing and understanding your own code is better than copying code.

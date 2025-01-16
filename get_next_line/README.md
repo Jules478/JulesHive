@@ -2,7 +2,7 @@
 
 ## What it is?
 
-Get_next_line, or gnl as it is commonly abbreviated to, is a function designed to read files which are passed to it and return each line contained within. 
+Get_next_line, or gnl as it is commonly abbreviated to, is a function designed to read files which are passed to it and return each line contained within separated by a new line (\n).
 
 ## How does it work?
 
