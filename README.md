@@ -22,6 +22,8 @@ This repository includes a wide variaty of functions and programs as part of the
 
 - push_swap - A program to sort lists of integers into numerical order.
 
+- so_long - A basic 2D top-down game.
+
 
 > [!NOTE]
 > This is currently a work in progress as of 16/1/25. This repository will be updated as projects are completed and validated. 
