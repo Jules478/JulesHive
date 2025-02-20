@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is my repository of all my work completed and validated while at Hive Helsinki, which is part of the 42 network of coding schools. It is intended as a guide only for other students at 42 schools who find this repository as a reference tool. It is also intended as a portfolio of the work I created during my studies.
+This is my repository of all my work completed and validated while at Hive Helsinki, which is part of the 42 network of coding schools. It is intended as a guide only for other students at 42 schools who find this repository and wish to use it as a reference tool. It is also intended as a portfolio of the work I created during my studies.
 
 ## What work is here?
 
