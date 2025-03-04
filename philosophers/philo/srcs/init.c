@@ -6,7 +6,7 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:21:45 by mpierce           #+#    #+#             */
-/*   Updated: 2025/03/03 13:58:00 by mpierce          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:46:43 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,18 @@ void	init_mother(t_mother *mother)
 
 	i = -1;
 	if (pthread_mutex_init(&mother->print_lock, NULL) != 0)
-		error_ret(mother, "Message mutex initialisation failed");
+		error_ret(mother, "Message mutex initialisation failed", 0);
 	mother->forks = malloc(mother->philo_no * sizeof(pthread_mutex_t));
 	if (!mother->forks)
-		error_ret(mother, "Fork lock allocation failed");
+		error_ret(mother, "Fork lock allocation failed", 1);
 	while (++i < mother->philo_no)
 	{
 		if (pthread_mutex_init(&mother->forks[i], NULL) != 0)
-			error_ret(mother, "Fork mutex initialisation failed");
+		{
+			while (i--)
+				pthread_mutex_destroy(&mother->forks[i]);
+			error_ret(mother, "Fork mutex initialisation failed", 1);
+		}
 	}
 	mother->start_time = get_current_time(mother) + 200;
 	mother->death = false;
@@ -66,7 +70,7 @@ void	init_manager(t_mother *mother, char **argv)
 	init_mother(mother);
 	mother->philo = malloc(mother->philo_no * sizeof(t_philo));
 	if (!mother->philo)
-		error_ret(mother, "Philo allocation failed");
+		error_ret(mother, "Philo allocation failed", 1);
 	while (++i < mother->philo_no)
 		init_philos(&mother->philo[i], i, argv, mother);
 }

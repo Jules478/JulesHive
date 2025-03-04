@@ -6,7 +6,7 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:16:29 by mpierce           #+#    #+#             */
-/*   Updated: 2025/03/03 13:56:51 by mpierce          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:30:47 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,13 @@ void	eating(t_philo *philo)
 	print_msg(philo, EAT);
 	philo->since_last = get_current_time(philo->mother);
 	ft_usleep(philo, philo->eat_time);
+}
+
+void	thread_error(t_mother *mother, char *msg, int i)
+{
+	free_all(mother, 1);
+	while (i--)
+		pthread_join(mother->philo[i].tid, NULL);
+	printf("\e[1;31m%s\n\e[0m", msg);
+	exit(1);
 }

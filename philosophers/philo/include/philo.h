@@ -6,7 +6,7 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:28:53 by mpierce           #+#    #+#             */
-/*   Updated: 2025/03/03 16:51:32 by mpierce          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:17:46 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	assign_to_struct(t_mother *mother, int argc, char **argv);
 
 // General Functions //
 
-void	error_ret(t_mother *mother, char *msg);
+void	error_ret(t_mother *mother, char *msg, int mutex);
 long	get_current_time(t_mother *mother);
-void	free_all(t_mother *mother);
+void	free_all(t_mother *mother, int mutex);
 
 // Thread Functions //
 
@@ -78,5 +78,6 @@ void	print_msg(t_philo *philo, int msg);
 long	time_funcs(t_philo *philo, int mode);
 void	ft_usleep(t_philo *philo, long time);
 void	eating(t_philo *philo);
+void	thread_error(t_mother *mother, char *msg, int i);
 
 #endif

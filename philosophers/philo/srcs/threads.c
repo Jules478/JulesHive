@@ -6,7 +6,7 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:49:21 by mpierce           #+#    #+#             */
-/*   Updated: 2025/03/03 13:57:39 by mpierce          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:43:30 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ void	create_threads(t_mother *mother)
 	{
 		if (pthread_create(&mother->philo[i].tid, NULL, &philo_control, \
 			&mother->philo[i]) != 0)
-			error_ret(mother, "Thread creation failed");
+			thread_error(mother, "Thread creation failed", i);
 	}
 	while (i--)
 	{
 		if (pthread_join(mother->philo[i].tid, NULL) != 0)
-			error_ret(mother, "Thread joining failed");
+			error_ret(mother, "Thread joining failed", 1);
 	}
 	pthread_mutex_destroy(&mother->print_lock);
 	while (++i < mother->philo_no)
