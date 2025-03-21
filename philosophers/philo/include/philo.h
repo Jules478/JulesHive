@@ -6,7 +6,7 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:28:53 by mpierce           #+#    #+#             */
-/*   Updated: 2025/03/04 17:17:46 by mpierce          ###   ########.fr       */
+/*   Updated: 2025/03/18 15:32:03 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ to die>\n<time to eat>\n<time to sleep>\n<no of times to eat> (optional)"
 
 typedef struct s_philo	t_philo;
 
+typedef struct s_forks
+{
+	pthread_mutex_t	lock;
+	_Atomic bool	on_table;
+}	t_forks;
+
 typedef struct s_mother
 {
 	t_philo			*philo;
-	pthread_mutex_t	*forks;
+	t_forks			*forks;
 	pthread_mutex_t	print_lock;
 	int				philo_no;
 	int				philo_full;
@@ -54,30 +60,34 @@ typedef struct s_philo
 	long			sleep_time;
 	long			since_last;
 	pthread_t		tid;
-	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*left_fork;
+	t_forks			*right_fork;
+	t_forks			*left_fork;
 	_Atomic bool	full;
 }	t_philo;
 
 // Validation //
 
 int		ft_atoi(const char *nptr);
-void	validation(char *arg);
-void	assign_to_struct(t_mother *mother, int argc, char **argv);
+int		validation(char *arg);
+int		assign_to_struct(t_mother *mother, int argc, char **argv);
 
 // General Functions //
 
-void	error_ret(t_mother *mother, char *msg, int mutex);
+int		error_ret(t_mother *mother, char *msg, int print);
 long	get_current_time(t_mother *mother);
-void	free_all(t_mother *mother, int mutex);
+void	free_all(t_mother *mother, int print);
 
 // Thread Functions //
 
-void	create_threads(t_mother *mother);
+int		create_threads(t_mother *mother);
 void	print_msg(t_philo *philo, int msg);
 long	time_funcs(t_philo *philo, int mode);
 void	ft_usleep(t_philo *philo, long time);
 void	eating(t_philo *philo);
-void	thread_error(t_mother *mother, char *msg, int i);
+int		thread_error(t_mother *mother, char *msg, int i);
+void	only_one(t_philo *philo);
+int		check_left_fork(t_philo *philo);
+int		check_right_fork(t_philo *philo);
+void	think_at_start(t_philo *philo);
 
 #endif

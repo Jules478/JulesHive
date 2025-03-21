@@ -6,7 +6,7 @@
 #    By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 17:26:54 by mpierce           #+#    #+#              #
-#    Updated: 2025/03/03 16:56:11 by mpierce          ###   ########.fr        #
+#    Updated: 2025/03/18 14:34:34 by mpierce          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME = philo
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -pthread 
+CFLAGS = -Wall -Wextra -Werror -pthread
 
 RM = rm -rf
 
 SRCS = \
+		srcs/extras.c \
 		srcs/init.c \
 		srcs/philo_utils.c \
 		srcs/philo.c \

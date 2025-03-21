@@ -6,51 +6,46 @@
 /*   By: mpierce <mpierce@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 14:49:21 by mpierce           #+#    #+#             */
-/*   Updated: 2025/03/04 17:43:30 by mpierce          ###   ########.fr       */
+/*   Updated: 2025/03/18 15:32:20 by mpierce          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	snoozenthink(t_philo *philo)
+void	snooze(t_philo *philo)
 {
 	if (philo->mother->stop == true)
 		return ;
 	print_msg(philo, SLEEP);
 	ft_usleep(philo, philo->sleep_time);
+}
+
+void	think(t_philo *philo)
+{
 	if (philo->mother->stop == true)
 		return ;
 	print_msg(philo, THINK);
-	usleep(1);
+	usleep(1000);
 }
 
 void	eat(t_philo *philo)
 {
 	if (philo->mother->stop == true)
 		return ;
-	pthread_mutex_lock(philo->left_fork);
-	if (philo->mother->stop == true)
-	{
-		pthread_mutex_unlock(philo->left_fork);
+	while (philo->left_fork->on_table == false)
+		time_funcs(philo, 3);
+	pthread_mutex_lock(&philo->left_fork->lock);
+	if (check_left_fork(philo) == 1)
 		return ;
-	}
 	print_msg(philo, FORK);
 	if (philo->mother->philo_no == 1)
-	{
-		pthread_mutex_unlock(philo->left_fork);
-		ft_usleep(philo, philo->die_time);
+		return (only_one(philo));
+	while (philo->right_fork->on_table == false)
+		time_funcs(philo, 3);
+	pthread_mutex_lock(&philo->right_fork->lock);
+	if (check_right_fork(philo) == 1)
 		return ;
-	}
-	pthread_mutex_lock(philo->right_fork);
-	if (philo->mother->stop == true)
-	{
-		pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(philo->left_fork);
-		return ;
-	}
 	eating(philo);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_unlock(philo->left_fork);
 }
 
 void	*philo_control(void *param)
@@ -60,25 +55,29 @@ void	*philo_control(void *param)
 
 	i = 0;
 	philo = (t_philo *)param;
-	time_funcs(philo, 1);
-	if (philo->philo_index % 2 == 0)
-		usleep(100);
+	if (philo->philo_index % 2 != 0)
+		think_at_start(philo);
+	else
+		think(philo);
 	while (philo->mother->stop == false)
 	{
 		if (philo->mother->stop == true)
 			break ;
 		if (time_funcs(philo, 3) == 1)
 			break ;
-		if (philo->eat_no > 0 && i++ == philo->eat_no)
+		if (philo->eat_no != -2 && i++ == philo->eat_no)
 			break ;
 		eat(philo);
 		if (philo->mother->philo_no != 1)
-			snoozenthink(philo);
+		{
+			snooze(philo);
+			think(philo);
+		}
 	}
 	return (NULL);
 }
 
-void	create_threads(t_mother *mother)
+int	create_threads(t_mother *mother)
 {
 	int	i;
 
@@ -86,15 +85,16 @@ void	create_threads(t_mother *mother)
 	while (++i < mother->philo_no)
 	{
 		if (pthread_create(&mother->philo[i].tid, NULL, &philo_control, \
-			&mother->philo[i]) != 0)
-			thread_error(mother, "Thread creation failed", i);
+				&mother->philo[i]) != 0)
+		{
+			mother->stop = true;
+			return (thread_error(mother, "Thread creation failed", i));
+		}
 	}
 	while (i--)
 	{
 		if (pthread_join(mother->philo[i].tid, NULL) != 0)
-			error_ret(mother, "Thread joining failed", 1);
+			return (error_ret(mother, "Thread joining failed", 1));
 	}
-	pthread_mutex_destroy(&mother->print_lock);
-	while (++i < mother->philo_no)
-		pthread_mutex_destroy(&mother->forks[i]);
+	return (0);
 }
