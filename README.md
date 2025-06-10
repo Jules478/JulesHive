@@ -10,20 +10,27 @@ This repository includes a wide variaty of functions and programs as part of the
 
 ### Rank 00
 
-- libft - A library of custom functions for use in other projects.
+- [libft](https://github.com/Jules478/JulesHive/tree/main/libft) - A library of custom functions for use in other projects.
 
 ### Rank 01
 
-- get_next_line - A function to read and return data from files.
+- [get_next_line](https://github.com/Jules478/JulesHive/tree/main/get_next_line) - A function to read and return data from files.
 
-- ft_printf - A custom implementation of 'printf'
+- [ft_printf](https://github.com/Jules478/JulesHive/tree/main/ft_printf) - A custom implementation of 'printf'
 
 ### Rank 02
 
-- push_swap - A program to sort lists of integers into numerical order.
+- [push_swap](https://github.com/Jules478/JulesHive/tree/main/push_swap) - A program to sort lists of integers into numerical order.
 
-- so_long - A basic 2D top-down game.
+- [so_long](https://github.com/Jules478/JulesHive/tree/main/so_long) - A basic 2D top-down game.
 
+- [pipex](https://github.com/Jules478/JulesHive/tree/main/pipex) - A program to replicate redirection and command processing similar to bash.
+
+### Rank 03
+
+- [philosophers](https://github.com/Jules478/JulesHive/tree/main/philosophers/philo) - A program designed to simulate the [Dining Philosophers Problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem) and demonstrate issues that can arise with simultaneous processing.
+
+- [minishell](https://github.com/Jules478/JulesHive/tree/main/minishell) - A basic shell program with heavy reference from bash
 
 > [!NOTE]
-> This is currently a work in progress as of 16/1/25. This repository will be updated as projects are completed and validated. 
+> This is currently a work in progress as of 10/6/25. This repository will be updated as projects are completed and validated. 
