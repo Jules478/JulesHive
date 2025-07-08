@@ -34,3 +34,7 @@ This repository includes a wide variaty of functions and programs as part of the
 
 > [!NOTE]
 > This is currently a work in progress as of 10/6/25. This repository will be updated as projects are completed and validated. 
+
+### Rank 04
+
+- [CPP](https://github.com/Jules478/JulesHive/tree/main/CPP) - A series of mini projects designed to introduce the basics of C++ and object oriented languages.
